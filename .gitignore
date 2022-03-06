@@ -1,0 +1,7 @@
+results/
+software/
+results.back/
+Snakefile~
+config.yaml~
+input/rlpbwt
+input/pbwt
