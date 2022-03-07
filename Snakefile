@@ -94,7 +94,7 @@ rule downloadRlpbwt:
         os.path.join(software_folder, "done.txt")
     output:
         directory(rlpbwt_folder),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     shell:
         """
         cd {software_folder}
@@ -183,7 +183,7 @@ rule runPbwtDynamic:
 rule makeRlpbwtNaive:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "naive.ser")
     shell:
@@ -195,7 +195,7 @@ rule makeRlpbwtNaive:
 rule runRlpbwtNaive:
     input:
         os.path.join(input_rlpbwt_folder, "naive.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtNaive.txt"),
         os.path.join(results_folder, "rlpbwtNaive.txt")
@@ -208,7 +208,7 @@ rule runRlpbwtNaive:
 rule makeRlpbwtBitvectors:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "bitvector.ser")
     shell:
@@ -220,7 +220,7 @@ rule makeRlpbwtBitvectors:
 rule runRlpbwtBitvectors:
     input:
         os.path.join(input_rlpbwt_folder, "bitvector.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtBitvector.txt"),
         os.path.join(results_folder, "rlpbwtBitvector.txt")
@@ -235,7 +235,7 @@ rule runRlpbwtBitvectors:
 rule makeRlpbwtPanel:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "panel.ser")
     shell:
@@ -247,7 +247,7 @@ rule makeRlpbwtPanel:
 rule runRlpbwtPanel:
     input:
         os.path.join(input_rlpbwt_folder, "panel.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtPanel.txt"),
         os.path.join(results_folder, "rlpbwtPanel.txt")
@@ -260,7 +260,7 @@ rule runRlpbwtPanel:
 rule makeRlpbwtPanelExt:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "panel_ext.ser")
     shell:
@@ -272,7 +272,7 @@ rule makeRlpbwtPanelExt:
 rule runRlpbwtPanelExt:
     input:
         os.path.join(input_rlpbwt_folder, "panel_ext.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtPanelExt.txt"),
         os.path.join(results_folder, "rlpbwtPanelExt.txt")
@@ -286,7 +286,7 @@ rule makeRlpbwtSlpNoThr:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
         os.path.join(input_rlpbwt_folder, "panel.slp"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")        
+        os.path.join(rlpbwt_folder, "build/rlpbwt")        
     output:
         os.path.join(input_rlpbwt_folder, "slp_no_thr.ser")
     shell:
@@ -298,7 +298,7 @@ rule makeRlpbwtSlpNoThr:
 rule runRlpbwtSlpNoThr:
     input:
         os.path.join(input_rlpbwt_folder, "slp_no_thr.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtSlpNoThr.txt"),
         os.path.join(results_folder, "rlpbwtSlpNoThr.txt")
@@ -312,7 +312,7 @@ rule makeRlpbwtSlpNoThrExt:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
         os.path.join(input_rlpbwt_folder, "panel.slp"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "slp_no_thr_ext.ser")
     shell:
@@ -324,7 +324,7 @@ rule makeRlpbwtSlpNoThrExt:
 rule runRlpbwtSlpNoThrExt:
     input:
         os.path.join(input_rlpbwt_folder, "slp_no_thr_ext.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtSlpNoThrExt.txt"),
         os.path.join(results_folder, "rlpbwtSlpNoThrExt.txt")
@@ -339,7 +339,7 @@ rule makeRlpbwtSlpThr:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
         os.path.join(input_rlpbwt_folder, "panel.slp"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "slp_thr.ser")
     shell:
@@ -351,7 +351,7 @@ rule makeRlpbwtSlpThr:
 rule runRlpbwtSlpThr:
     input:
         os.path.join(input_rlpbwt_folder, "slp_thr.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtSlpThr.txt"),
         os.path.join(results_folder, "rlpbwtSlpThr.txt")
@@ -366,7 +366,7 @@ rule makeRlpbwtSlpThrExt:
     input:
         os.path.join(input_rlpbwt_folder, "panel.macs"),
         os.path.join(input_rlpbwt_folder, "panel.slp"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(input_rlpbwt_folder, "slp_thr_ext.ser")
     shell:
@@ -378,7 +378,7 @@ rule makeRlpbwtSlpThrExt:
 rule runRlpbwtSlpThrExt:
     input:
         os.path.join(input_rlpbwt_folder, "slp_thr_ext.ser"),
-        os.path.join(rlpbwt_folder, "/build/rlpbwt")
+        os.path.join(rlpbwt_folder, "build/rlpbwt")
     output:
         os.path.join(results_time_folder, "rlpbwtSlpThrExt.txt"),
         os.path.join(results_folder, "rlpbwtSlpThrExt.txt")
