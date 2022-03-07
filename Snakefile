@@ -3,8 +3,7 @@ configfile: "config.yaml"
 import os
 import math
 
-#compile_cores = math.ceil(workflow.cores / 2)
-
+compile_cores = math.ceil(workflow.cores / 2)
 data_folder = config["folder"]["data"]
 software_folder = config["folder"]["software"]
 results_folder = config["folder"]["res"]
@@ -103,7 +102,7 @@ rule downloadRlpbwt:
         git clone https://github.com/dlcgold/rlpbwt
         cd rlpbwt
         cmake -S . -B build -D BUILD_TESTS=OFF
-        cmake --build build -j1
+        cmake --build build -j{compile_cores}
         touch done.txt
         """
 
