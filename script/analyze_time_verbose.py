@@ -21,16 +21,26 @@ def main(argv):
     width = argv[3]
     query_number = argv[4]
     time_obj_list = []
-    for filename in os.listdir(directory):
+    files = ["pbwtNaive.txt", "pbwtIndexed.txt", "pbwtDynamic.txt",
+             "rlpbwtNaive.txt", "rlpbwtBitvector.txt",
+             "rlpbwtPanel.txt", "rlpbwtPanelExt.txt",
+             "rlpbwtSlpThr.txt", "rlpbwtSlpThrExt.txt",
+             "rlpbwtSlpNoThr.txt", "rlpbwtSlpNoThrExt.txt"]
+    #for filename in os.listdir(directory):
+    for filename in files:
         if "pbwt" in filename or "rlpbwt" in filename:
             file = os.path.join(directory, filename)
             if os.path.isfile(file):
                 with open(file) as f:
                     time_obj = TimeObj()
                     lines = f.readlines()
-                    if lines[0] == "rlpbwt":
+                    if lines[0].strip() == "rlpbwt":
                         time_obj.command = "rlpbwt"
-                        time_obj.version = lines[1].strip()
+                        if " " in lines[1].strip():
+                            tmp = lines[1].strip().replace(" ", "\n")
+                            time_obj.version = tmp
+                        else:
+                            time_obj.version = lines[1].strip()
                         time_obj.user_time = float(lines[2].strip())
                         time_obj.sys_time = float(lines[3].strip())
                         time_obj.mem = float(lines[4].strip())
@@ -41,8 +51,7 @@ def main(argv):
                         time_obj.sys_time = float(lines[3].strip())
                         time_obj.mem = float(lines[4].strip())
                     time_obj_list.append(time_obj)
-    #print(time_obj_list)
-    #version = ["original", "indexed", "dynamic", "naive", "bitvectors", "panel", "panel extended"]
+    print(time_obj_list)
     title = f"{query_number} queries on {int(height)-int(query_number)}x{width} panel"
     version = []
     mems = []
@@ -53,6 +62,7 @@ def main(argv):
         mems.append(elem.mem)
         time_user.append(elem.user_time)
         time_sys.append(elem.sys_time)
+    print(version)
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
@@ -61,7 +71,7 @@ def main(argv):
     plt.ylabel("kilobytes")
     plt.xlabel("version")
     plt.title(title)
-    plt.savefig("results/mem.png", dpi=300)
+    plt.savefig("results/mem.png", dpi=200)
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
@@ -72,7 +82,7 @@ def main(argv):
     plt.xlabel("version")
     plt.title(title)
     plt.legend()
-    plt.savefig("results/time.png", dpi=300)
+    plt.savefig("results/time.png", dpi=200)
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -388,7 +388,7 @@ rule runRlpbwtSlpThrExt:
     shell:
         """
         cd {rlpbwt_folder}/build
-        /usr/bin/time --verbose -o ../../../{results_time_folder}/rlpbwtSlpThrExt.txt ./rlpbwt -l ../../../{input_rlpbwt_folder}/slp_thr_ext.ser -s ../../../{input_rlpbwt_folder}/panel.slp  -q  ../../../{input_rlpbwt_folder}/query.macs -o ../../../{results_folder}/rlpbwtSlpThrExt.txt -S -e
+        /usr/bin/time --verbose -o ../../../{results_time_folder}/rlpbwtSlpThrExt.txt ./rlpbwt -l ../../../{input_rlpbwt_folder}/slp_thr_ext.ser -s ../../../{input_rlpbwt_folder}/panel.slp  -q  ../../../{input_rlpbwt_folder}/query.macs -o ../../../{results_folder}/rlpbwtSlpThrExt.txt -S -t -e
         """
         
 rule extractVerbose:
