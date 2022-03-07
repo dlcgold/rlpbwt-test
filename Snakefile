@@ -102,7 +102,7 @@ rule downloadRlpbwt:
         git clone https://github.com/dlcgold/rlpbwt
         cd rlpbwt
         cmake -S . -B build -D BUILD_TESTS=OFF
-        cmake --build build -j{compile_cores}
+        cmake --build build -j{compile_cores2}
         touch done.txt
         """
 
@@ -191,6 +191,8 @@ rule makeRlpbwtNaive:
 rule runRlpbwtNaive:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "naive.ser"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
     output:
@@ -215,6 +217,8 @@ rule makeRlpbwtBitvectors:
 rule runRlpbwtBitvectors:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "bitvector.ser"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
     output:
@@ -239,6 +243,8 @@ rule makeRlpbwtPanel:
 rule runRlpbwtPanel:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "panel.ser"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
     output:
@@ -263,6 +269,8 @@ rule makeRlpbwtPanelExt:
 rule runRlpbwtPanelExt:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "panel_ext.ser"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
     output:
@@ -288,6 +296,8 @@ rule makeRlpbwtSlpNoThr:
 rule runRlpbwtSlpNoThr:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "slp_no_thr.ser"),
         slp = os.path.join(input_rlpbwt_folder, "panel.slp"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
@@ -314,6 +324,8 @@ rule makeRlpbwtSlpNoThrExt:
 rule runRlpbwtSlpNoThrExt:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "slp_no_thr_ext.ser"),
         slp = os.path.join(input_rlpbwt_folder, "panel.slp"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
@@ -341,6 +353,8 @@ rule makeRlpbwtSlpThr:
 rule runRlpbwtSlpThr:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "slp_thr.ser"),
         slp = os.path.join(input_rlpbwt_folder, "panel.slp"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
@@ -367,6 +381,8 @@ rule makeRlpbwtSlpThrExt:
 rule runRlpbwtSlpThrExt:
     input:
         os.path.join(rlpbwt_folder, "done.txt"),
+        os.path.join(results_folder, "done.txt"),
+        os.path.join(results_time_folder, "done.txt"),
         rlpbwt = os.path.join(input_rlpbwt_folder, "slp_thr_ext.ser"),
         slp = os.path.join(input_rlpbwt_folder, "panel.slp"),
         query = os.path.join(input_rlpbwt_folder, "query.macs")
