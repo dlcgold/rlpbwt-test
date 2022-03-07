@@ -22,7 +22,7 @@ def main(argv):
     query_number = argv[4]
     time_obj_list = []
     for filename in os.listdir(directory):
-        if filename != "done.txt":
+        if "pbwt" in filename or "rlpbwt" in filename:
             file = os.path.join(directory, filename)
             if os.path.isfile(file):
                 with open(file) as f:
@@ -56,7 +56,7 @@ def main(argv):
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
-    ax.tick_params(axis = 'x', labelsize = 5)
+    ax.tick_params(axis = 'x', labelsize = 3.5)
     plt.bar(version, mems, color="#5e81ac")
     plt.ylabel("kilobytes")
     plt.xlabel("version")
@@ -65,7 +65,7 @@ def main(argv):
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
-    ax.tick_params(axis = 'x', labelsize = 5)
+    ax.tick_params(axis = 'x', labelsize = 3.5)
     plt.bar(version, time_user, color='#bf616a', label="user time")
     plt.bar(version, time_sys, color='#5e81ac', label="system time") 
     plt.ylabel("seconds")
