@@ -62,7 +62,6 @@ def main(argv):
         mems.append(elem.mem)
         time_user.append(elem.user_time)
         time_sys.append(elem.sys_time)
-    print(version)
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
@@ -81,7 +80,7 @@ def main(argv):
     plt.ylabel("seconds")
     plt.xlabel("version")
     plt.title(title)
-    plt.legend()
+    plt.legend(fontsize = 7)
     plt.savefig("results/time.png", dpi=200)
 
 if __name__ == "__main__":

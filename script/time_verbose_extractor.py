@@ -28,7 +28,7 @@ def main(argv):
                 if tokens[0] == "Command being timed":
                     # out.write(tokens[1].lstrip())
                     # out.write("\n")
-                    if './rlpbwt' in tokens[1]:
+                    if '/rlpbwt' in tokens[1]:
                         out.write("rlpbwt\n")
                         if '-N' in tokens[1]:
                             out.write("naive\n")
@@ -49,7 +49,7 @@ def main(argv):
                             else:
                                 out.write("slp_thr \n")
                                 
-                    if './pbwt' in tokens[1]:
+                    if '/pbwt' in tokens[1]:
                         out.write("pbwt\n")
                         if '-matchNaive' in tokens[1]:
                              out.write("original\n")
