@@ -23,6 +23,7 @@ panel_height = config["params"]["panel_height"]
 panel_width = config["params"]["panel_width"]
 
 new_panel_height = panel_height - query_number;
+new_panel_heightm = panel_height - query_number - 1;
 
 input_name = config["params"]["input_panel"]
 input_panel = os.path.join(input_folder, input_name)
@@ -102,7 +103,7 @@ rule downloadRlpbwt:
         git clone https://github.com/dlcgold/rlpbwt
         cd rlpbwt
         cmake -S . -B build -D BUILD_TESTS=OFF
-        cmake --build build -j{compile_cores2}
+        cmake --build build -j{compile_cores}
         touch done.txt
         """
 
@@ -115,7 +116,7 @@ rule makeInputPbwt:
     shell:
         """
         ./{pbwt_folder}/pbwt -readMacs {input_panel} -write {input_folder}/tmp.pbwt -writeSites {input_folder}/tmp.sites
-        ./{pbwt_folder}/pbwt -read {input_folder}/tmp.pbwt -subsample 0 {new_panel_height} -write {output.panel}
+        ./{pbwt_folder}/pbwt -read {input_folder}/tmp.pbwt -subsample 0 {new_panel_heightm} -write {output.panel}
         ./{pbwt_folder}/pbwt -read {input_folder}/tmp.pbwt -subsample {new_panel_height} {query_number} -write {output.query}
         rm {input_folder}/tmp.pbwt
         rm {input_folder}/tmp.sites
