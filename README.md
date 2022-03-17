@@ -10,4 +10,5 @@ mamba create -c conda-forge -c bioconda -n snakemake snakemake
 source ../conda/bin/activate snakemake
 ../conda/bin/conda install -n snakemake -c conda-forge libcurl  openssl
 snakemake run_after_checkpoint --cores 8
+source ../conda/bin/deactivate
 ```
