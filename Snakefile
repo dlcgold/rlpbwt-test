@@ -116,7 +116,7 @@ rule makeInputPbwt:
     shell:
         """
         ./{pbwt_folder}/pbwt -readMacs {input_panel} -write {input_folder}/tmp.pbwt -writeSites {input_folder}/tmp.sites
-        ./{pbwt_folder}/pbwt -read {input_folder}/tmp.pbwt -subsample 0 {new_panel_heightm} -write {output.panel}
+        ./{pbwt_folder}/pbwt -read {input_folder}/tmp.pbwt -subsample 0 {new_panel_height} -write {output.panel}
         ./{pbwt_folder}/pbwt -read {input_folder}/tmp.pbwt -subsample {new_panel_height} {query_number} -write {output.query}
         rm {input_folder}/tmp.pbwt
         rm {input_folder}/tmp.sites
@@ -136,19 +136,19 @@ rule makeInputRlpbwt:
         python build_slp.py -i ../../../{output.panel} -o ../../../{output.slp}
         """
 
-rule runPbwtNaive:
-    input:
-        os.path.join(results_folder, "done.txt"),
-        os.path.join(results_time_folder, "done.txt"),
-        panel = os.path.join(input_pbwt_folder, "panel.pbwt"),
-        query = os.path.join(input_pbwt_folder, "query.pbwt")
-    output:
-        out_time = os.path.join(results_time_folder, "pbwtNaive.txt"),
-        out = os.path.join(results_folder, "pbwtNaive.txt")
-    shell:
-        """
-        /usr/bin/time --verbose -o {output.out_time} ./{pbwt_folder}/pbwt -read {input.panel} -matchNaive {input.query} > {output.out}
-        """
+#rule runPbwtNaive:
+#    input:
+#        os.path.join(results_folder, "done.txt"),
+#        os.path.join(results_time_folder, "done.txt"),
+#        panel = os.path.join(input_pbwt_folder, "panel.pbwt"),
+#        query = os.path.join(input_pbwt_folder, "query.pbwt")
+#    output:
+#        out_time = os.path.join(results_time_folder, "pbwtNaive.txt"),
+#        out = os.path.join(results_folder, "pbwtNaive.txt")
+#    shell:
+#        """
+#        /usr/bin/time --verbose -o {output.out_time} ./{pbwt_folder}/pbwt -read {input.panel} -matchNaive {input.query} > {output.out}
+#        """
         
 rule runPbwtIndexed:
     input:
@@ -407,7 +407,7 @@ rule extractVerbose:
 
 rule analizeTime:
     input:
-        os.path.join(results_parsed_time_folder, "pbwtNaive.txt"),
+#        os.path.join(results_parsed_time_folder, "pbwtNaive.txt"),
         os.path.join(results_parsed_time_folder, "pbwtIndexed.txt"),
         os.path.join(results_parsed_time_folder, "pbwtDynamic.txt"),
         os.path.join(results_parsed_time_folder, "rlpbwtNaive.txt"),
