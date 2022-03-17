@@ -67,6 +67,9 @@ def main(argv):
                 if tokens[0] == "Maximum resident set size (kbytes)":
                     out.write(tokens[1].lstrip())
                     out.write("\n")
+                if tokens[0] == "Elapsed (wall clock) time (h":
+                    out.write(f"{tokens[4].lstrip()}.{tokens[5].lstrip()}")
+                    out.write("\n")
 
 
 if __name__ == "__main__":
