@@ -2,6 +2,7 @@ import sys
 import os
 import matplotlib.pyplot as plt
 
+
 class TimeObj:
     def __init__(self, command=0, version="", user_time=0, sys_time=0, mem=0, clock=""):
         self.command = command
@@ -27,7 +28,6 @@ def main(argv):
              "rlpbwtPanel.txt", "rlpbwtPanelExt.txt",
              "rlpbwtSlpThr.txt", "rlpbwtSlpThrExt.txt",
              "rlpbwtSlpNoThr.txt", "rlpbwtSlpNoThrExt.txt"]
-    #for filename in os.listdir(directory):
     for filename in files:
         if "pbwt" in filename or "rlpbwt" in filename:
             file = os.path.join(directory, filename)
@@ -54,7 +54,7 @@ def main(argv):
                         time_obj.mem = float(lines[5].strip())
                         time_obj.clock = lines[4].strip()
                     time_obj_list.append(time_obj)
-    title = f"{query_number} queries on {int(height)-int(query_number)}x{width} panel"
+    title = f"{query_number} queries on {int(height) - int(query_number)}x{width} panel"
     version = []
     mems = []
     time_user = []
@@ -66,39 +66,40 @@ def main(argv):
         time_user.append(elem.user_time)
         time_sys.append(elem.sys_time)
         clock = elem.clock.split('.')
-        clock_time.append(3600*float(clock[0])+60*float(clock[1])+float(clock[2]))
+        clock_time.append(3600 * float(clock[0]) + 60 * float(clock[1]) + float(clock[2]))
 
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
-    ax.tick_params(axis = 'x', labelsize = 3.5)
+    ax.tick_params(axis='x', labelsize=3.5)
     plt.bar(version, mems, color="#5e81ac")
     plt.ylabel("kilobytes")
     plt.xlabel("version")
-    plt.title(title+' / memory used')
+    plt.title(title + ' / memory used')
     plt.savefig("results/mem.png", dpi=200)
-    
+
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
-    ax.tick_params(axis = 'x', labelsize = 3.5)
+    ax.tick_params(axis='x', labelsize=3.5)
     plt.bar(version, time_user, color='#bf616a', label="user time")
-    plt.bar(version, time_sys, color='#5e81ac', label="system time") 
+    plt.bar(version, time_sys, color='#5e81ac', label="system time")
     plt.ylabel("seconds")
     plt.xlabel("version")
-    plt.title(title+' / time')
-    plt.legend(fontsize = 7)
+    plt.title(title + ' / time')
+    plt.legend(fontsize=7)
     plt.savefig("results/time.png", dpi=200)
-    
+
     plt.figure()
     plt.yscale('log')
     ax = plt.gca()
-    ax.tick_params(axis = 'x', labelsize = 3.5)
+    ax.tick_params(axis='x', labelsize=3.5)
     plt.bar(version, clock_time, color="#a3be8c")
     plt.ylabel("seconds")
     plt.xlabel("version")
     plt.title(title + ' / clock time')
     plt.savefig("results/clock.png", dpi=200)
+
 
 if __name__ == "__main__":
     main(sys.argv)

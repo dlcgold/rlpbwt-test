@@ -42,7 +42,7 @@ def main(argv):
                 if count > 1:
                     out.write(line[:-(querynumber+1)])
                     restline = "\t".join(line.strip().split()[:-1]) + "\t"
-                    query = restline + line.strip().split()[4][-(querynumber + 1):]
+                    query = restline + line.strip().split()[4][-querynumber:]
                     outq.write(query)
                     out.write("\n")
                     outq.write("\n")
