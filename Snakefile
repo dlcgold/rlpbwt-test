@@ -12,10 +12,6 @@ htslib_folder = os.path.join(software_folder, "htslib")
 rlpbwt_folder = os.path.join(software_folder, "rlpbwt")
 rlpbwt_build_folder = os.path.join(rlpbwt_folder, "build")
 
-print(software_folder)
-print(pbwt_folder)
-print(htslib_folder)
-print(rlpbwt_folder)
 APPROACHES_PBWT = [
     "pbwtIndexed",
     "pbwtDynamic",
