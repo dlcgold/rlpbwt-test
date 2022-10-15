@@ -1,11 +1,5 @@
 folder :
-  data : "data"
   software : "software" # sub dir inside /data
   res : "results"
   input : "input"
-  
-params:
-  input_panel : "input.macs"
-  query_number : 5000
-  panel_height : 30000
-  panel_width : 4294
+  output : "output"

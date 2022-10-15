@@ -65,8 +65,7 @@ def main(argv):
         mems.append(elem.mem)
         time_user.append(elem.user_time)
         time_sys.append(elem.sys_time)
-        clock = elem.clock.split('.')
-        clock_time.append(3600 * float(clock[0]) + 60 * float(clock[1]) + float(clock[2]))
+        clock_time.append(float(elem.clock))
 
     plt.figure()
     plt.yscale('log')
@@ -100,6 +99,16 @@ def main(argv):
     plt.title(title + ' / clock time')
     plt.savefig("results/clock.png", dpi=200)
 
+    plt.figure()
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.scatter(clock_time, mems)
+    plt.xlabel("wall time")
+    plt.ylabel("memory")
+    plt.title(title + ' / time vs memory')
+    for l, x, y in zip(version, clock_time, mems):
+        plt.annotate(l, (x, y), fontsize="x-small")
+    plt.savefig("results/time_vs_mem.png", dpi=200)
 
 if __name__ == "__main__":
     main(sys.argv)
